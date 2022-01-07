@@ -51,6 +51,13 @@ group by calisanlar.id;
 -- maaşına ek %10 aile yardım zammı yapınız.
 -- kisi_basi_gelir = toplam_gelir / cocuk_sayisi + 2 (anne ve baba)
 
+update calisanlar set
+maas=maas*1.10
+where 2000> (maas + (select ek_gelir from aileler))/(cocuk_sayisi+2);
 
-
+update calisanlar
+set maas = (maas*1.1)
+ where 2000>(maas+(select ek_gelir from aileler where calisanlar.id=aileler.id))/
+ ((select cocuk_sayisi from aileler where calisanlar.id = aileler.id)+2);
 select * from aileler;
+select * from calisanlar;

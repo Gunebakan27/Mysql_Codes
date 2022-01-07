@@ -17,3 +17,21 @@ select concat('Adiniz Soyadiniz : ', ad, ' ', soyad) Ad_Soyad from customer;
 
 select concat(musteri_no, '. ', ad,' ',soyad) Musteri, sehir, cinsiyet, puan
 from customer;
+select * from customer;
+-- ****************  length-left-right (String functions) *********************
+select ad, length(ad), soyad, length(soyad)
+from customer;
+
+select ad, left(ad,2), soyad, left(soyad,2)
+from customer;
+
+select ad, soyad, concat(left(ad,1), '.',left(soyad,1),'.') bas_harfler
+from customer;
+-- soru:  5 ve 5 karakterden büyük olan isimleri MORRIS -> MRS şeklinde yazdırınız.
+-- yani 1. , 3. ve 5. karakterleri alınız
+
+select ad, concat(left(ad,1), right(left(ad,3),1), right(left(ad,5),1)) kisaltma
+from customer
+where length(ad)>=5;
+
+
